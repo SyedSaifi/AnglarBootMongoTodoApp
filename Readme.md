@@ -48,12 +48,18 @@ mvn spring-boot:run
 
 The backend server will start at <http://localhost:8080>.
 
-**4. Run the frontend app using npm**
+**4. Run test and generate coverage report for frontend app**
 
 ```bash
 cd frontend
 npm install
-npm start
+ng test --code-coverage
+```
+
+**5. Test and Run the frontend app**
+
+```bash
+ng serve
 ```
 
 Frontend server will run on <http://localhost:4200>

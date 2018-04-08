@@ -10,24 +10,32 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
-      require('@angular/cli/plugins/karma')
+      require('@angular/cli/plugins/karma'),
+      require('karma-htmlfile-reporter'),
+      require( 'karma-phantomjs-launcher' )
     ],
     client:{
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
-    coverageIstanbulReporter: {
-      reports: [ 'html', 'lcovonly' ],
-      fixWebpackSourcePaths: true
-    },
     angularCli: {
       environment: 'dev'
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'html'],
+    htmlReporter: {
+      outputFile: '../reports/todo-unit-test.html',
+
+      // Optional
+      pageTitle: 'Todo Unit Tests',
+      subPageTitle: 'Jasmine testcases executed for todo application',
+      groupSuites: true,
+      useCompactStyle: true,
+      useLegacyStyle: true
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false
+    browsers: ['PhantomJS'],
+    singleRun: true
   });
 };
