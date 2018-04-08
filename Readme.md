@@ -37,7 +37,7 @@ git clone https://github.com/SyedSaifi/AnglarBootMongoTodoApp.git
 ```bash
 cd backend
 mvn package
-java -jar target/angularBootMongoTodoApp-1.0.0.jar
+java -jar binary/angularBootMongoTodoApp-1.0.0.jar
 ```
 
 Alternatively, you can run the app without packaging it using -
