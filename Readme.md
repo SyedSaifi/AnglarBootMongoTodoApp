@@ -56,7 +56,7 @@ npm install
 ng test --code-coverage
 ```
 
-**5. Test and Run the frontend app**
+**5. Run the frontend app**
 
 ```bash
 ng serve
