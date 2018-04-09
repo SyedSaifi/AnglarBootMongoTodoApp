@@ -1,22 +1,27 @@
 <div class="todo-content">
-  <h2 style="text-align: center">My Todos</h2>
+  <h4 style="text-align: center">Add Todo</h4>
   <div class="todo-create">
-    <form #todoForm="ngForm" (ngSubmit)="createTodo(todoForm)" novalidate>
-      <input type="text" id="title" class="form-control" placeholder="Type a todo and press enter..." required name="title" [(ngModel)]="newTodo.title"
-        #title="ngModel">
-      <div *ngIf="title.errors && title.dirty" class="alert alert-danger">
-        <div [hidden]="!title.errors.required">
+    <form #f="ngForm">
+      <div class="form-group">
+        <input type="text" id="title" name="title" class="form-control" placeholder="Type a todo and press enter." [(ngModel)]="newTodo.title"
+          #title="ngModel" required>
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
           Title is required.
         </div>
+      </div>
+      <div class="input-group-append">
+        <button style="margin-top: 1%" class="btn btn-outline-secondary" type="button" 
+        (click)="createTodo(f)">Enter</button>
       </div>
     </form>
   </div>
 </div>
 
 <div class="todo-content">
-  <ul class="todo-list">
-    <li *ngFor="let todo of todos" [class.completed]="todo.completed === true">
-      <div class="todo-row" *ngIf="!editing || editingTodo.id != todo.id">
+  <h4 style="text-align: center">My Todos</h4>
+  <ul class="list-group"  style="height: 250px">
+    <li *ngFor="let todo of todos" [class.completed]="todo.completed === true" class="list-group-item d-flex justify-content-between align-items-center">
+      <div *ngIf="!editing || editingTodo.id != todo.id">
         <a class="todo-completed" (click)="toggleCompleted(todo)">
           <i class="material-icons toggle-completed-checkbox"></i>
         </a>
